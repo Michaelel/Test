@@ -17,17 +17,14 @@
                     <h3>Filters</h3>
                     <label>Search: <input type="text" ng-model="search.name"></label>
                     <h3>Categories</h3>
-                    <form>
                     <div ng-repeat="bsr_category in categories">
-                        <button class="btn btn-primary" ng-click="filterByCategory = {bsr_category: '{{ bsr_category }}'}">{{ bsr_category }}</button>
+                        <button class="btn btn-primary" ng-click="setCategoryFilter(bsr_category)">{{ bsr_category }}</button>
                         <br>
                         <br>
                     </div>
-                </form>
-                    
                 </div>
                 <div class="col-md-9">
-                    <div class="card" ng-repeat="product in products | filter:search | filter:filterByCategory">
+                    <div class="card" ng-repeat="product in products | filter:search | filter: categoryFilter">
                         <div class="card-header">
                             <h5>{{ product.name }}</h5>
                         </div>
