@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+    <div ng-controller="repeatController">
+        <div class="card" ng-repeat="product in products">
+            <div class="card-header">
+                <h5>{{ product.name }}</h5>
+            </div>
+            <div class="card-body">
+                <img ng-src="{{ product.img }}" alt="photo">
+                <h5 class="card-title">{{ product.bsr_category }}</h5>
+                <p class="card-text">{{ product.asin }}</p>
+                <p class="card-text">{{ product.price | currency }}</p>
+                <a href="{{ product.link }}" class="btn btn-primary">To buy</a>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    
+</body>
+</html>
+
+
+
+
