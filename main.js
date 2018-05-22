@@ -1,4 +1,15 @@
-var app = angular.module('app', [])
+var app = angular.module('app', [/*'ngRoute'*/])
+
+
+/*app.config(function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            template: '<h1>This is my home page</h1>',
+        })
+        .when('/asd', {
+            template: '<h1>Second page</h1>',
+        })
+});*/
 
 app.controller('dataController', function ($scope, $http) {
     $http.get('https://demo3569733.mockable.io/').success(data => {
@@ -16,5 +27,7 @@ app.controller('dataController', function ($scope, $http) {
         $scope.categoryFilter = {bsr_category: category}
     }
 })
+
+
 
 
