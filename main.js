@@ -9,9 +9,13 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/:bsr_category', {
             controller: 'dataController'
         })
+        .when('/:locSearch', {
+            conroller: 'dataController'
+        })
+
 }])
 
-app.controller('dataController', ['$scope', '$http', function ($scope, $http) {
+app.controller('dataController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     $http.get('https://demo3569733.mockable.io/')
         .then(data => data.data)
         .then(data => {
@@ -26,10 +30,17 @@ app.controller('dataController', ['$scope', '$http', function ($scope, $http) {
         .catch(err => {
             throw err
         })
-
     $scope.setCategoryFilter = category => {
         $scope.categoryFilter = {bsr_category: category}
+        $scope.loc = $location.path().slice(1,$location.path().length)
+
     }
+
+    $scope.searchRoute = name => {
+        $scope.locName = $location.path(name)
+        //console.log($scope.locSearch)
+    }
+
 }])
 
 

@@ -10,15 +10,14 @@
     <script type="text/javascript" src="main.js"></script>
 </head>
 <body ng-app="app">
-    <ng-view></ng-view>
     <div ng-controller="dataController" class="data">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
                     <h3>Filters</h3>
-                    <label>Search: <input type="text" ng-model="search.name"></label>
+                    <label>Search: <input type="text" ng-change="searchRoute(search.name)" ng-model="search.name"></label>
                     <h3>Categories</h3>
-                    <a href="#!/" class="btn btn-primary" ng-click="setCategoryFilter('')">All</a>
+                    <a ng-href="#!/" class="btn btn-primary" ng-click="setCategoryFilter('')">All</a>
                     <br>
                     <br>
                     <div ng-repeat="bsr_category in categories">
@@ -28,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="card" ng-repeat="product in products | filter:search | filter: categoryFilter">
+                    <div class="card" ng-repeat="product in products | filter: search.name | filter: categoryFilter">
                         <div class="card-header">
                             <h5>{{ product.name }}</h5>
                         </div>
@@ -42,7 +41,6 @@
                         <br>
                         <br>
                     </div>
-                    <ng-view></ng-view>
                 </div>
             </div>
         </div>
