@@ -6,12 +6,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/', {
             controller: 'dataController'
         })
-        .when('/:bsr_category', {
+        .when('/:search.name/:bsr_category', {
             controller: 'dataController'
         })
-        .when('/:locSearch', {
-            conroller: 'dataController'
-        })
+
 
 }])
 
@@ -30,16 +28,28 @@ app.controller('dataController', ['$scope', '$http', '$location', function ($sco
         .catch(err => {
             throw err
         })
+    $scope.categoryLocation = ''
     $scope.setCategoryFilter = category => {
         $scope.categoryFilter = {bsr_category: category}
-        $scope.loc = $location.path().slice(1,$location.path().length)
+        //$scope.loc = $location.path().slice(1,$location.path().length)
+        $scope.categoryLocation = category + '/'
 
     }
 
-    $scope.searchRoute = name => {
-        $scope.locName = $location.path(name)
-        //console.log($scope.locSearch)
+    $scope.setSearchFilter = inputName => {
+        $scope.searchFilter = {name: inputName}
     }
+    // if (!$scope.categoryFilter) {
+    //     $location.path($scope.searchFilter)
+    // } else {
+    //     $location.path($scope.categoryFilter + '/' + $scope.searchFilter)
+    //
+    // }
+
+    // $scope.searchRoute = name => {
+    //     $scope.locName = $location.path(name)
+    //     //console.log($scope.locSearch)
+    // }
 
 }])
 
