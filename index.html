@@ -22,13 +22,13 @@
                     <br>
                     <br>
                     <div ng-repeat="bsr_category in categories">
-                        <a class="btn btn-primary" ng-click="setCategoryFilter(bsr_category)" ng-href="#!/{{ bsr_category }}">{{ bsr_category }}</a>
+                        <a class="btn btn-primary" ng-click="setCategoryFilter(bsr_category)" ng-href="#!/{{ bsr_category }}{{ searchLocation }}">{{ bsr_category }}</a>
                         <br>
                         <br>
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="card" ng-repeat="product in products | filter: searchFilter | filter: categoryFilter">
+                    <div class="card" ng-repeat="product in products | filter: { name: locationSearch } | filter: { bsr_category: locationCategory }">
                         <div class="card-header">
                             <h5>{{ product.name }}</h5>
                         </div>
